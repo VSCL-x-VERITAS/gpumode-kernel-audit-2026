@@ -1,0 +1,8 @@
+target,problem,scored_cases,scored_pass,discovery_evals,discovery_valid_inputs,discovery_fail_attributable,discovery_fail_with_vendor,confirmation_candidates,confirmation_runs,candidates_reproduced_in_all_runs,families_attributable
+Olek,eigh,52,52,996,996,61,38,5,15,5,clustered dense diagonal diagonal_plus_low_rank_banded_row_scaled lapack_dense_clustered_spectrum lapack_diag_clustered_spectrum lapack_random_symmetric_low_magnitude mixed near_rank_deficient_and_mixed_batches nearrank paired_clusters_unequal_multiplicity psd rankdef repeated repeated_clustered_spectra_rotated_subspaces rowscale sketch_nullspace_perturbations spectrum
+elianaive,eigh,52,52,996,996,0,26,5,15,0,
+nikhilbarhate99,eigh,52,52,996,996,0,10,5,15,0,
+teelaitila,eigh,52,52,996,996,11,15,5,15,5,dense diagonal_plus_low_rank_banded_row_scaled mixed paired_clusters_unequal_multiplicity rowscale
+vendor,eigh,52,52,996,996,0,38,0,0,0,
+vendor_degraded,eigh,0,0,996,996,787,30,0,0,0,band clustered dense diagonal diagonal_plus_low_rank_banded_row_scaled lapack_dense_clustered_spectrum lapack_dense_geometric_spectrum lapack_random_symmetric_low_magnitude magnitude_spread mixed near_rank_deficient_and_mixed_batches nearrank psd rankdef relative_eigenvalue_gap repeated repeated_clustered_spectra_rotated_subspaces rowscale sketch_nullspace_perturbations spectrum
+zhongmingee,eigh,52,52,996,996,18,38,5,15,5,mixed near_rank_deficient_and_mixed_batches

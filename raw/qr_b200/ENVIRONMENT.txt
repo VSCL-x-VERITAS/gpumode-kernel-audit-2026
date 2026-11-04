@@ -1,0 +1,7 @@
+python  : 3.12.13
+torch   : 2.12.1+cu130
+cuda(rt): 13.0
+triton  : 3.7.1
+gpu     : NVIDIA B200
+nvcc    : Build cuda_13.3.r13.3/compiler.38244171_0
+checks  : triton>=3.7 OK; nvidia/cu13 layout OK

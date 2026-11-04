@@ -1,0 +1,14 @@
+target,round,leaderboard_id,handle,rank,kind,submission_sha256,gpu,torch
+10billiontokens,qr_v2,774,10billiontokens,1,competition,5ee505415e7bbde3ed8e93e2bed0432a82a32435f15344734996b4fd947d04b7,NVIDIA B200,2.12.1+cu130
+Maheshram1,qr_v1,773,Maheshram1,4,competition,f45253829d76916cebb9859ad9070d56e1a0e7229eacf944073acf23d5f64372,NVIDIA B200,2.12.1+cu130
+Sinatras,qr_v1,773,Sinatras,3,competition,1a1f4cdb53a47dd5ad2989433ec9b44078a7122f2bd69ca3c2aa6e72bf2008cd,NVIDIA B200,2.12.1+cu130
+badelsteinlelbach,qr_v1,773,badelsteinlelbach,2,competition,b4b87a0d616e92e8b896b4a743f3d7877fd50e74aa235159a060fd44415337cb,NVIDIA B200,2.12.1+cu130
+cusolver,control,,cuSOLVER (torch.linalg.qr),,control,,NVIDIA B200,2.12.1+cu130
+dhu.randhar,qr_v2,774,dhu.randhar,3,competition,3e46c1024198846619959d31da4edcdccb3892c9050cfa843d427c39d1d77eac,NVIDIA B200,2.12.1+cu130
+elianaive,qr_v1,773,elianaive,5,competition,872f04d3fffca3313e6903882b144f653cc8fa49e758a92399386359d3f90270,NVIDIA B200,2.12.1+cu130
+geqrf,control,,cuSOLVER geqrf (torch.geqrf),,control,,NVIDIA B200,2.12.1+cu130
+geqrf_bf16in,control,,cuSOLVER geqrf on bfloat16-rounded input,,control,,NVIDIA B200,2.12.1+cu130
+michaelmelons,qr_v2,774,michaelmelons,5,competition,4b2e58cd068ff2673db772ba98e4b4bf56054890782cd00d41809784005a7646,NVIDIA B200,2.12.1+cu130
+nernst,qr_v2,774,gau.nernst,2,competition,76e5a48a7d1495d3ae3f66eb83f1919c45247ea152ff40898545c625cb5bced8,NVIDIA B200,2.12.1+cu130
+nikhilbarhate99,qr_v1,773,nikhilbarhate99,1,competition,110749eb86197ef9bc152a4d1d3ecc42220d4a1757ca806a0a3db06e76d4b52d,NVIDIA B200,2.12.1+cu130
+zhongmingee,qr_v2,774,zhongmingee,4,competition,c4e17e9c7847901fefbf2481c0c0ef0788342249fcf799492a17119c8c067b6b,NVIDIA B200,2.12.1+cu130

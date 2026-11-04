@@ -1,0 +1,8 @@
+target,problem,leaderboard_id,handle,rank,kind,submission_id,submission_time,score,submission_sha256,lines
+zhongmingee,cholesky,776,zhongmingee,1,competition,923166,2026-07-28T22:00:09.602599+00:00,0.0002015311576338281,df027c599366953bb335debd3bf1f0dffb28f059322111c443e62319f8406d32,11103
+Frosty40,cholesky,776,Frosty40,2,competition,929894,2026-07-29T23:12:30.866892+00:00,0.00024067712131121827,41fe78ced37d4227894888d1f4e9c83bc4005360697a5b63af0df839a45ec710,7605
+Olek,cholesky,776,Olek,3,competition,930075,2026-07-29T23:22:48.402617+00:00,0.0002511119460825243,35d0b6469769888f3ebe691839edb2dd608f18b246ab76fc033722d014e1368e,9799
+viridale,cholesky,776,viridale,4,competition,930104,2026-07-29T23:26:34.974297+00:00,0.00026423134496098,203d71901eb3017bb934faf41cf5b4cbb074a0e43237602540567b816b173b87,9840
+Ravi_Theja,cholesky,776,Ravi Theja,5,competition,930394,2026-07-29T23:52:50.036648+00:00,0.00026523407078997847,ee96b530483aa6b6eba7efa169acb6bde412569d04a14a63babcb3674c6ebf77,20275
+vendor,cholesky,,cuSOLVER via PyTorch (torch.linalg.cholesky_ex),,control,,,,,
+vendor_degraded,cholesky,,cuSOLVER via PyTorch (torch.linalg.cholesky_ex) on inputs rounded to bfloat16,,control,,,,,

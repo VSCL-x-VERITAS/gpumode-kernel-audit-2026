@@ -1,0 +1,8 @@
+target,problem,leaderboard_id,handle,rank,kind,submission_id,submission_time,score,submission_sha256,lines
+teelaitila,eigh,775,teelaitila,1,competition,877642,2026-07-14T23:22:00.186788+00:00,0.006600305201611481,101f2a481d2a7fd62cc150aa34109a77ac837c48d8b19e790c8b27edfc805efb,13115
+nikhilbarhate99,eigh,775,nikhilbarhate99,2,competition,877652,2026-07-14T23:24:10.78225+00:00,0.0067409271403564355,e76144a0cc734f94eb3177f1c50eda10ee2478760ebfa02e23a5418ada1fd8e3,9996
+elianaive,eigh,775,elianaive,3,competition,877791,2026-07-14T23:58:03.920354+00:00,0.006755952961407113,fc80e91b47051449c4a38e8d05fcbbca4ce18aad23c982ca22d949ed4b19fd02,18327
+zhongmingee,eigh,775,zhongmingee,4,competition,877085,2026-07-14T21:01:03.474928+00:00,0.0069164725933168174,30220427ef3448ab44ddfdc2fad949b19fc1d92a42cdd81432dc319deeefba6e,3966
+Olek,eigh,775,Olek,5,competition,876173,2026-07-14T15:40:07.580953+00:00,0.008499129679348896,905d178afe3f0363b898a481b1b1fd9b4c41d06be5ea1d93a19a5ae970ef46d6,7224
+vendor,eigh,,cuSOLVER via PyTorch (torch.linalg.eigh),,control,,,,,
+vendor_degraded,eigh,,cuSOLVER via PyTorch (torch.linalg.eigh) on inputs rounded to float8 (e4m3),,control,,,,,

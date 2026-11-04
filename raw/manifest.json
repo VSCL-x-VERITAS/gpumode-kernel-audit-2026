@@ -1,0 +1,219 @@
+{
+ "note": "Metadata of the audited entries as downloaded from the GPU MODE leaderboards in July and August 2026. sha256 is of the entry file as downloaded. Leaderboards 773 and 774 (QR rounds 1 and 2) carry only the file hash and the rank at download time.",
+ "problems": {
+  "cholesky": {
+   "leaderboard_id": 776,
+   "leaderboard_url": "https://www.gpumode.com/api/leaderboard/776",
+   "entries": [
+    {
+     "target": "zhongmingee",
+     "user_name": "zhongmingee",
+     "rank": 1,
+     "sha256": "df027c599366953bb335debd3bf1f0dffb28f059322111c443e62319f8406d32",
+     "bytes": 1010664,
+     "lines": 11103,
+     "submission_id": 923166,
+     "submission_time": "2026-07-28T22:00:09.602599+00:00",
+     "score": 0.0002015311576338281
+    },
+    {
+     "target": "Frosty40",
+     "user_name": "Frosty40",
+     "rank": 2,
+     "sha256": "41fe78ced37d4227894888d1f4e9c83bc4005360697a5b63af0df839a45ec710",
+     "bytes": 389677,
+     "lines": 7605,
+     "submission_id": 929894,
+     "submission_time": "2026-07-29T23:12:30.866892+00:00",
+     "score": 0.00024067712131121827
+    },
+    {
+     "target": "Olek",
+     "user_name": "Olek",
+     "rank": 3,
+     "sha256": "35d0b6469769888f3ebe691839edb2dd608f18b246ab76fc033722d014e1368e",
+     "bytes": 946356,
+     "lines": 9799,
+     "submission_id": 930075,
+     "submission_time": "2026-07-29T23:22:48.402617+00:00",
+     "score": 0.0002511119460825243
+    },
+    {
+     "target": "viridale",
+     "user_name": "viridale",
+     "rank": 4,
+     "sha256": "203d71901eb3017bb934faf41cf5b4cbb074a0e43237602540567b816b173b87",
+     "bytes": 414520,
+     "lines": 9840,
+     "submission_id": 930104,
+     "submission_time": "2026-07-29T23:26:34.974297+00:00",
+     "score": 0.00026423134496098
+    },
+    {
+     "target": "Ravi_Theja",
+     "user_name": "Ravi Theja",
+     "rank": 5,
+     "sha256": "ee96b530483aa6b6eba7efa169acb6bde412569d04a14a63babcb3674c6ebf77",
+     "bytes": 866613,
+     "lines": 20275,
+     "submission_id": 930394,
+     "submission_time": "2026-07-29T23:52:50.036648+00:00",
+     "score": 0.00026523407078997847
+    }
+   ]
+  },
+  "eigh": {
+   "leaderboard_id": 775,
+   "leaderboard_url": "https://www.gpumode.com/api/leaderboard/775",
+   "entries": [
+    {
+     "target": "teelaitila",
+     "user_name": "teelaitila",
+     "rank": 1,
+     "sha256": "101f2a481d2a7fd62cc150aa34109a77ac837c48d8b19e790c8b27edfc805efb",
+     "bytes": 583616,
+     "lines": 13115,
+     "submission_id": 877642,
+     "submission_time": "2026-07-14T23:22:00.186788+00:00",
+     "score": 0.006600305201611481
+    },
+    {
+     "target": "nikhilbarhate99",
+     "user_name": "nikhilbarhate99",
+     "rank": 2,
+     "sha256": "e76144a0cc734f94eb3177f1c50eda10ee2478760ebfa02e23a5418ada1fd8e3",
+     "bytes": 523437,
+     "lines": 9996,
+     "submission_id": 877652,
+     "submission_time": "2026-07-14T23:24:10.78225+00:00",
+     "score": 0.0067409271403564355
+    },
+    {
+     "target": "elianaive",
+     "user_name": "elianaive",
+     "rank": 3,
+     "sha256": "fc80e91b47051449c4a38e8d05fcbbca4ce18aad23c982ca22d949ed4b19fd02",
+     "bytes": 936392,
+     "lines": 18327,
+     "submission_id": 877791,
+     "submission_time": "2026-07-14T23:58:03.920354+00:00",
+     "score": 0.006755952961407113
+    },
+    {
+     "target": "zhongmingee",
+     "user_name": "zhongmingee",
+     "rank": 4,
+     "sha256": "30220427ef3448ab44ddfdc2fad949b19fc1d92a42cdd81432dc319deeefba6e",
+     "bytes": 1003634,
+     "lines": 3966,
+     "submission_id": 877085,
+     "submission_time": "2026-07-14T21:01:03.474928+00:00",
+     "score": 0.0069164725933168174
+    },
+    {
+     "target": "Olek",
+     "user_name": "Olek",
+     "rank": 5,
+     "sha256": "905d178afe3f0363b898a481b1b1fd9b4c41d06be5ea1d93a19a5ae970ef46d6",
+     "bytes": 336329,
+     "lines": 7224,
+     "submission_id": 876173,
+     "submission_time": "2026-07-14T15:40:07.580953+00:00",
+     "score": 0.008499129679348896
+    }
+   ]
+  },
+  "qr_v1": {
+   "leaderboard_id": 773,
+   "leaderboard_url": "https://www.gpumode.com/api/leaderboard/773",
+   "entries": [
+    {
+     "target": "nikhilbarhate99",
+     "user_name": "nikhilbarhate99",
+     "rank": 1,
+     "sha256": "110749eb86197ef9bc152a4d1d3ecc42220d4a1757ca806a0a3db06e76d4b52d",
+     "bytes": 39280,
+     "lines": 1040
+    },
+    {
+     "target": "badelsteinlelbach",
+     "user_name": "badelsteinlelbach",
+     "rank": 2,
+     "sha256": "b4b87a0d616e92e8b896b4a743f3d7877fd50e74aa235159a060fd44415337cb",
+     "bytes": 734139,
+     "lines": 12521
+    },
+    {
+     "target": "Sinatras",
+     "user_name": "Sinatras",
+     "rank": 3,
+     "sha256": "1a1f4cdb53a47dd5ad2989433ec9b44078a7122f2bd69ca3c2aa6e72bf2008cd",
+     "bytes": 71584,
+     "lines": 1526
+    },
+    {
+     "target": "Maheshram1",
+     "user_name": "Maheshram1",
+     "rank": 4,
+     "sha256": "f45253829d76916cebb9859ad9070d56e1a0e7229eacf944073acf23d5f64372",
+     "bytes": 70712,
+     "lines": 2007
+    },
+    {
+     "target": "elianaive",
+     "user_name": "elianaive",
+     "rank": 5,
+     "sha256": "872f04d3fffca3313e6903882b144f653cc8fa49e758a92399386359d3f90270",
+     "bytes": 69503,
+     "lines": 1431
+    }
+   ]
+  },
+  "qr_v2": {
+   "leaderboard_id": 774,
+   "leaderboard_url": "https://www.gpumode.com/api/leaderboard/774",
+   "entries": [
+    {
+     "target": "10billiontokens",
+     "user_name": "10billiontokens",
+     "rank": 1,
+     "sha256": "5ee505415e7bbde3ed8e93e2bed0432a82a32435f15344734996b4fd947d04b7",
+     "bytes": 443940,
+     "lines": 12662
+    },
+    {
+     "target": "nernst",
+     "user_name": "gau.nernst",
+     "rank": 2,
+     "sha256": "76e5a48a7d1495d3ae3f66eb83f1919c45247ea152ff40898545c625cb5bced8",
+     "bytes": 54185,
+     "lines": 1674
+    },
+    {
+     "target": "dhu.randhar",
+     "user_name": "dhu.randhar",
+     "rank": 3,
+     "sha256": "3e46c1024198846619959d31da4edcdccb3892c9050cfa843d427c39d1d77eac",
+     "bytes": 842589,
+     "lines": 14557
+    },
+    {
+     "target": "zhongmingee",
+     "user_name": "zhongmingee",
+     "rank": 4,
+     "sha256": "c4e17e9c7847901fefbf2481c0c0ef0788342249fcf799492a17119c8c067b6b",
+     "bytes": 973871,
+     "lines": 25793
+    },
+    {
+     "target": "michaelmelons",
+     "user_name": "michaelmelons",
+     "rank": 5,
+     "sha256": "4b2e58cd068ff2673db772ba98e4b4bf56054890782cd00d41809784005a7646",
+     "bytes": 207831,
+     "lines": 2999
+    }
+   ]
+  }
+ }
+}

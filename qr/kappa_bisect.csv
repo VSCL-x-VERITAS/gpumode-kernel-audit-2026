@@ -1,0 +1,92 @@
+target,n,batch,min_break_kappa,realized_kappa,f_at_break,ran_path,note
+10billiontokens,32,20,,,,,did not break by kappa=1e12
+10billiontokens,176,40,,,,,did not break by kappa=1e12
+10billiontokens,352,40,,,,,did not break by kappa=1e12
+10billiontokens,512,640,794.3258949419277,794.3265186359628,1.0420717723329895,kernel,
+10billiontokens,1024,60,986.5954428179989,986.5960360642482,1.280335800342023,kernel,
+10billiontokens,2048,8,,,,,did not break by kappa=1e12
+10billiontokens,4096,2,,,,,did not break by kappa=1e12
+Maheshram1,32,20,,,,,did not break by kappa=1e12
+Maheshram1,176,40,,,,,did not break by kappa=1e12
+Maheshram1,352,40,,,,,did not break by kappa=1e12
+Maheshram1,512,640,1.000000025733394,1.000000078492997,223.3996404799844,kernel,
+Maheshram1,1024,60,,,,,did not break by kappa=1e12
+Maheshram1,2048,8,,,,,did not break by kappa=1e12
+Maheshram1,4096,2,,,,,did not break by kappa=1e12
+Sinatras,32,20,,,,,did not break by kappa=1e12
+Sinatras,176,40,1.000000025733394,1.000000078640178,2.7454690973812648,kernel,
+Sinatras,352,40,,,,,did not break by kappa=1e12
+Sinatras,512,640,,,,,did not break by kappa=1e12
+Sinatras,1024,60,,,,,did not break by kappa=1e12
+Sinatras,2048,8,,,,,did not break by kappa=1e12
+Sinatras,4096,2,,,,,did not break by kappa=1e12
+badelsteinlelbach,32,20,,,,,did not break by kappa=1e12
+badelsteinlelbach,176,40,1.000000025733394,1.000000078640178,2.3258566476764724,kernel,
+badelsteinlelbach,352,40,,,,,did not break by kappa=1e12
+badelsteinlelbach,512,640,,,,,did not break by kappa=1e12
+badelsteinlelbach,1024,60,,,,,did not break by kappa=1e12
+badelsteinlelbach,2048,8,,,,,did not break by kappa=1e12
+badelsteinlelbach,4096,2,,,,,did not break by kappa=1e12
+cusolver,32,20,,,,,did not break by kappa=1e12
+cusolver,176,40,,,,,did not break by kappa=1e12
+cusolver,352,40,,,,,did not break by kappa=1e12
+cusolver,512,640,,,,,did not break by kappa=1e12
+cusolver,1024,60,,,,,did not break by kappa=1e12
+cusolver,2048,8,,,,,did not break by kappa=1e12
+cusolver,4096,2,,,,,did not break by kappa=1e12
+dhu.randhar,32,20,,,,,did not break by kappa=1e12
+dhu.randhar,176,40,1.000000025733394,1.000000078640178,2.773891114540536,kernel,
+dhu.randhar,352,40,,,,,did not break by kappa=1e12
+dhu.randhar,512,640,,,,,did not break by kappa=1e12
+dhu.randhar,1024,60,,,,,did not break by kappa=1e12
+dhu.randhar,2048,8,1.000000025733394,1.000000077273849,5.56408269112668,kernel,
+dhu.randhar,4096,2,2.3713742548731584,2.371374253940257,1.0348200714576232,kernel,
+elianaive,32,20,,,,,did not break by kappa=1e12
+elianaive,176,40,,,,,did not break by kappa=1e12
+elianaive,352,40,,,,,did not break by kappa=1e12
+elianaive,512,640,,,,,did not break by kappa=1e12
+elianaive,1024,60,,,,,did not break by kappa=1e12
+elianaive,2048,8,,,,,did not break by kappa=1e12
+elianaive,4096,2,,,,,did not break by kappa=1e12
+geqrf,32,20,,,,,did not break by kappa=1e12
+geqrf,176,40,,,,,did not break by kappa=1e12
+geqrf,352,40,,,,,did not break by kappa=1e12
+geqrf,512,640,,,,,did not break by kappa=1e12
+geqrf,1024,60,,,,,did not break by kappa=1e12
+geqrf,2048,8,,,,,did not break by kappa=1e12
+geqrf,4096,2,,,,,did not break by kappa=1e12
+geqrf_bf16in,32,20,1.000000025733394,1.0000000828374964,32.95574622127786,kernel,
+geqrf_bf16in,176,40,1.000000025733394,1.000000078640178,4.863346506856649,kernel,
+geqrf_bf16in,352,40,1.000000025733394,1.000000078246112,2.2943357726290206,kernel,
+geqrf_bf16in,512,640,1.000000025733394,1.000000078492997,1.573462423232621,kernel,
+geqrf_bf16in,1024,60,,,,,did not break by kappa=1e12
+geqrf_bf16in,2048,8,,,,,did not break by kappa=1e12
+geqrf_bf16in,4096,2,,,,,did not break by kappa=1e12
+michaelmelons,32,20,,,,,did not break by kappa=1e12
+michaelmelons,176,40,1.000000025733394,1.000000078640178,2.700630057877408,kernel,
+michaelmelons,352,40,,,,,did not break by kappa=1e12
+michaelmelons,512,640,,,,,did not break by kappa=1e12
+michaelmelons,1024,60,,,,,did not break by kappa=1e12
+michaelmelons,2048,8,1568658.4310043142,1568859.893189685,inf,kernel,
+michaelmelons,4096,2,35230.66067741848,35230.560456410705,inf,kernel,
+nernst,32,20,,,,,did not break by kappa=1e12
+nernst,176,40,,,,,did not break by kappa=1e12
+nernst,352,40,,,,,did not break by kappa=1e12
+nernst,512,640,,,,,did not break by kappa=1e12
+nernst,1024,60,,,,,did not break by kappa=1e12
+nernst,2048,8,,,,,did not break by kappa=1e12
+nernst,4096,2,,,,,did not break by kappa=1e12
+nikhilbarhate99,32,20,,,,,did not break by kappa=1e12
+nikhilbarhate99,176,40,,,,,did not break by kappa=1e12
+nikhilbarhate99,352,40,1.000000025733394,1.000000078246112,inf,kernel,
+nikhilbarhate99,512,640,1.000000025733394,1.000000078492997,189728.5807672552,kernel,
+nikhilbarhate99,1024,60,1.000000025733394,1.0000000775342301,inf,kernel,
+nikhilbarhate99,2048,8,1.000000025733394,1.000000077273849,inf,kernel,
+nikhilbarhate99,4096,2,1.000000025733394,1.0000000775328144,inf,kernel,
+zhongmingee,32,20,,,,,did not break by kappa=1e12
+zhongmingee,176,40,,,,,did not break by kappa=1e12
+zhongmingee,352,40,,,,,did not break by kappa=1e12
+zhongmingee,512,640,,,,,did not break by kappa=1e12
+zhongmingee,1024,60,,,,,did not break by kappa=1e12
+zhongmingee,2048,8,,,,,did not break by kappa=1e12
+zhongmingee,4096,2,,,,,did not break by kappa=1e12

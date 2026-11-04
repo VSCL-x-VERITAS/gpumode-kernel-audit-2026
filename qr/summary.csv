@@ -1,0 +1,14 @@
+target,round,leaderboard_id,handle,rank,kind,scored_cases,scored_pass_v1,scored_pass_v2,sweep_evals,sweep_breaks,families_broken,families,min_break_kappa
+10billiontokens,qr_v2,774,10billiontokens,1,competition,19,19,19,1052,157,10,band dense diagonal mixed nearcollinear nearrank randsvd rankdef rowscale upper,794.3258949419277
+Maheshram1,qr_v1,773,Maheshram1,4,competition,19,16,4,1051,586,10,band clustered dense diagonal mixed nearrank randsvd rankdef rowscale upper,1.000000025733394
+Sinatras,qr_v1,773,Sinatras,3,competition,19,19,19,1051,106,5,band clustered mixed randsvd rowscale,1.000000025733394
+badelsteinlelbach,qr_v1,773,badelsteinlelbach,2,competition,19,19,19,1051,92,6,band clustered mixed nearcollinear randsvd rowscale,1.000000025733394
+cusolver,control,,cuSOLVER (torch.linalg.qr),,control,19,19,19,1050,0,0,,
+dhu.randhar,qr_v2,774,dhu.randhar,3,competition,19,19,19,1053,330,10,band clustered diagonal mixed nearcollinear nearrank randsvd rankdef rowscale upper,1.000000025733394
+elianaive,qr_v1,773,elianaive,5,competition,19,19,19,1050,3,1,nearrank,
+geqrf,control,,cuSOLVER geqrf (torch.geqrf),,control,19,19,19,1050,0,0,,
+geqrf_bf16in,control,,cuSOLVER geqrf on bfloat16-rounded input,,control,19,8,7,1054,623,11,band clustered dense diagonal mixed nearcollinear nearrank randsvd rankdef rowscale upper,1.000000025733394
+michaelmelons,qr_v2,774,michaelmelons,5,competition,19,19,19,1053,360,11,band clustered dense diagonal mixed nearcollinear nearrank randsvd rankdef rowscale upper,1.000000025733394
+nernst,qr_v2,774,gau.nernst,2,competition,19,19,19,1050,46,2,mixed rowscale,
+nikhilbarhate99,qr_v1,773,nikhilbarhate99,1,competition,19,19,4,1055,755,11,band clustered dense diagonal mixed nearcollinear nearrank randsvd rankdef rowscale upper,1.000000025733394
+zhongmingee,qr_v2,774,zhongmingee,4,competition,19,19,19,1050,3,1,upper,

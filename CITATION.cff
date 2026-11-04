@@ -1,0 +1,41 @@
+cff-version: 1.2.0
+title: "GPU MODE linear-algebra kernel audit, 2026: results record"
+message: >-
+  If you use this record, cite it and the paper it accompanies (preferred-citation).
+  The data (everything outside scripts/, replay/ and qr/randsvd.py) is CC BY 4.0. The
+  scripts are MIT. The competitions, checkers and entry dataset are the work of GPU MODE.
+  Cite GPU MODE and link their dataset when you use their material (see references).
+type: dataset
+authors:
+  - family-names: Melnichenko
+    given-names: Maksim
+    affiliation: "International Computer Science Institute and University of California, Berkeley"
+version: 1.0.0
+date-released: 2026-11-04
+license: CC-BY-4.0
+repository-code: "https://github.com/VSCL-x-VERITAS/gpumode-kernel-audit-2026"
+preferred-citation:
+  type: article
+  title: "Principles for Autoformalizing Numerical Methods"
+  authors:
+    - family-names: Fountoulakis
+      given-names: Kimon
+    - family-names: Melnichenko
+      given-names: Maksim
+    - family-names: Mahoney
+      given-names: Michael W.
+  year: 2026
+  status: in-preparation
+references:
+  - type: dataset
+    title: "kernelbot-data: GPU MODE competition submissions"
+    authors:
+      - name: "GPU MODE"
+    url: "https://huggingface.co/datasets/GPUMODE/kernelbot-data"
+    year: 2026
+  - type: software
+    title: "reference-kernels: problem definitions and checkers for GPU MODE competitions"
+    authors:
+      - name: "GPU MODE"
+    url: "https://github.com/gpu-mode/reference-kernels"
+    year: 2026

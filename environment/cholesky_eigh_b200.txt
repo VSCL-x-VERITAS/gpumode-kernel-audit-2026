@@ -1,0 +1,7 @@
+gpu      : NVIDIA B200 (cloud instances, one fresh container per target; confirmation reruns in new containers)
+base     : nvidia/cuda:13.3.0-devel-ubuntu24.04, Python 3.13
+torch    : 2.12.0
+cuda     : 13.0 Python stack (cuda-python 13.0, cuda-toolkit 13.0.2 components)
+runner   : reproduces the organizers' kernelbot runner at commit ae732f7bf6f9178a0b5da0125a7d9257c4c8cb10
+checkers : the organizers' reference.py for eigh and cholesky, hashes in checkers.md
+env_hash : every record in raw/cholesky_b200 and raw/eigh_b200 carries the hash of the environment it ran in; the distinct values are listed in cholesky_eigh_b200_hashes.txt

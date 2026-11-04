@@ -1,0 +1,8 @@
+target,problem,scored_cases,scored_pass,discovery_evals,discovery_valid_inputs,discovery_fail_attributable,discovery_fail_with_vendor,confirmation_candidates,confirmation_runs,candidates_reproduced_in_all_runs,families_attributable
+Frosty40,cholesky,32,32,602,567,129,0,5,15,5,dense diagonal_spread low_rank_damping lowrank mixed_scale_condition_batches planted_randsvd_spd spectrum
+Olek,cholesky,32,32,602,567,42,0,5,15,5,dense diagonal_spread low_rank_damping lowrank mixed_scale_condition_batches spectrum
+Ravi_Theja,cholesky,32,32,602,567,85,0,5,15,0,dense diagonal_spread low_rank_damping lowrank mixed_scale_condition_batches planted_randsvd_spd probe_spoof spectrum
+vendor,cholesky,32,32,602,567,0,0,0,0,0,
+vendor_degraded,cholesky,0,0,602,567,437,0,0,0,0,dense diagonal low_rank_damping lowrank mixed_scale_condition_batches planted_randsvd_spd probe_spoof rowscale spectrum tridiagonal
+viridale,cholesky,32,32,602,567,233,0,5,15,5,dense diagonal diagonal_spread low_rank_damping lowrank mixed_scale_condition_batches planted_randsvd_spd probe_spoof rowscale spectrum tridiagonal
+zhongmingee,cholesky,32,32,602,567,194,0,5,15,4,dense diagonal_spread low_rank_damping lowrank mixed_scale_condition_batches planted_randsvd_spd probe_spoof rowscale spectrum tridiagonal
