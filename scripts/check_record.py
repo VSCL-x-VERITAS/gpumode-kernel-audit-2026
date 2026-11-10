@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Recompute every table and every count in README.md from the CSV tables and fail on any mismatch.
+"""Recompute every table and most counts in README.md from the CSV tables and fail on a mismatch.
 
 Usage (from the repository root):
   python3 scripts/check_record.py            check README.md against the CSV tables
   python3 scripts/check_record.py --tables   print the README's tables as computed from the CSV tables
 
 Every table in README.md (Summary, What was run, Results) is the output of --tables, verbatim,
-and the check fails if any of them differs. Each count stated in the README's prose is rebuilt
+and the check fails if any of them differs. Most counts stated in the README's prose are rebuilt
 from the data below and must appear in the README. The script also checks the counting rules,
 the rerun structure, that the record's files carry no identifier fields or host paths, and that
 every replay example in the README names a row of qr/sweep.csv that broke. Facts from outside
@@ -210,8 +210,8 @@ def tiers(problem):
     return sum(r["tier"] == "official_test" for r in o), sum(r["tier"] == "official_benchmark" for r in o)
 (ct, cb), (et, eb) = tiers("cholesky"), tiers("eigh")
 need(ct + cb == c_scored and et + eb == e_scored, "scored cases are the test plus benchmark cases")
-says(f"For QR this record regrades the benchmark cases ({len(v1_cases)} in round 1, {len(v2_cases)} in round 2)")
-says(f"For Cholesky it regrades both, {ct} test and {cb} benchmark cases, and for eigendecomposition both, {et} and {eb}.")
+says(f"For QR this record runs the benchmark cases ({len(v1_cases)} in round 1, {len(v2_cases)} in round 2)")
+says(f"For Cholesky it runs both, {ct} test and {cb} benchmark cases, and for eigendecomposition both, {et} and {eb}.")
 inv = [r for r in rows("cholesky/registered.csv") if r["target"] == "vendor" and r["input_valid"] == "False"]
 need(c_evals - c_valid == len(inv) and all(r["input_validity_evidence"].startswith("not SPD in fp32: cholesky_ex") for r in inv),
      "Cholesky inputs judged by cholesky_ex")
@@ -300,10 +300,10 @@ need(all(len(v) == 2 for (t, k), v in pairs.items() if k in set(v1_cases)), "the
 vary = sorted({t for (t, k), v in pairs.items() if len(v) == 2 and v[0]["f"] != v[1]["f"]})
 says(f"Each of the {len(v1_cases)} shared cases was run twice, once for each list. The two runs always got the same verdicts, but for "
      f"{' and '.join(qr[t]['row']['handle'] for t in vary)} their residuals differ slightly")
-rsall = [r for r in sweep if r["case"] == "randsvd"]
+rsall = [r for r in sweep if r["case"] == "randsvd" and r["target"] not in CONTROL_ORDER]
 floor = min(float(r["kappa"]) for r in rsall)
 need(floor < 1.0001, "the bottom of the searched randsvd range is about 1")
-says(f"Of the {len(rsall)} `randsvd` breaks, {sum(float(r['kappa']) == floor for r in rsall)} are at the bottom of the searched range, a condition number of about 1")
+says(f"Of the entries' {len(rsall)} `randsvd` breaks, {sum(float(r['kappa']) == floor for r in rsall)} are at the bottom of the searched range, a condition number of about 1")
 win_t = next(q for q in q2 if q["row"]["rank"] == "1")["row"]["target"]
 win = [r for r in sweep if r["target"] == win_t and r["broke"] == "True" and r["case"] == "rankdef" and r["n"] == "32"]
 need(win and {r["note"] for r in win} == {"Q or R non-finite"}, "the round-2 winner's rank-deficient order-32 breaks are non-finite")

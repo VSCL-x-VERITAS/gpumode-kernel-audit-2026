@@ -45,13 +45,14 @@ will link the paper when it is public.
 
 ## Terms
 
-- **Scored cases** are the organizers' own cases that this record regrades, from the task
-  files in [`reference-kernels`](https://github.com/gpu-mode/reference-kernels). A
-  leaderboard run checks an entry on the task's test cases and then times it on the
-  benchmark cases, which are checked too. For QR this record regrades the benchmark cases
-  (7 in round 1, 12 in round 2) and not the test cases (19 and 22). For Cholesky it
-  regrades both, 17 test and 15 benchmark cases, and for eigendecomposition both, 39 and
-  13.
+- **Scored cases** are the organizers' own case specifications from the task files in
+  [`reference-kernels`](https://github.com/gpu-mode/reference-kernels), which this record
+  runs at their listed seeds. A leaderboard run checks an entry on the task's test cases
+  and then times it on the benchmark cases, which are checked too. It derives each input's
+  seed from the listed one, so the inputs it checked differ from the ones this record ran.
+  For QR this record runs the benchmark cases (7 in round 1, 12 in round 2) and not the
+  test cases (19 and 22). For Cholesky it runs both, 17 test and 15 benchmark cases, and
+  for eigendecomposition both, 39 and 13.
 - A **legal input** is one the task allows. For QR it is a batch of n × n float32 matrices
   on the GPU, and the round-2 task statement bounds neither their conditioning nor their
   structure: "Each matrix must be factored correctly on its own merits." A Cholesky
@@ -189,8 +190,8 @@ breaks* counts, out of the 11 families, those with at least one round-2 break.
 | control |  | torch.geqrf (`geqrf`) | 1,050 | 1,050 | 0 | 0 | 0 |
 | control |  | torch.geqrf on bfloat16-rounded input (`geqrf_bf16in`) | 1,054 | 0 | 623 | 604 | 11 |
 
-Of the 20 `randsvd` breaks, 15 are at the bottom of the searched range, a condition
-number of about 1, so those entries failed on nearly orthogonal matrices. The first-ranked
+Of the entries' 16 `randsvd` breaks, 11 are at the bottom of the searched range, a
+condition number of about 1, so those entries failed on nearly orthogonal matrices. The first-ranked
 round-2 entry's breaks include batches of 20 rank-deficient matrices of order 32 that
 returned non-finite factors. Its lowest `randsvd` threshold was about 794, at order 512
 (`qr/kappa_bisect.csv`). The two replay examples below are these two evaluations.
@@ -307,7 +308,7 @@ counts in its prose, from the CSV files, and fails on a mismatch.
 
 ## Reproducing a QR verdict
 
-Every recorded QR input is determined by its row in `qr/sweep.csv`. For the ten organizer
+Every recorded QR input is determined by its row in `qr/sweep.csv` or `qr/scored.csv`. For the ten organizer
 families (`dense`, `upper`, `diagonal`, `rankdef`, `nearrank`, `clustered`, `band`,
 `nearcollinear`, `rowscale`, `mixed`) the input is the organizers' own
 `generate_input(batch, n, cond, seed, case)` from `problems/linalg/qr_v2/reference.py` in

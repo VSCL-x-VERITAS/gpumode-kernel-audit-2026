@@ -13,8 +13,8 @@ What it does: generates the input exactly as the audit did (the organizers'
 qr_v2 generate_input for every family except randsvd, which uses qr/randsvd.py),
 runs the submission's custom_kernel once, and applies both organizer checkers:
 round 1 (problems/linalg/qr_py) and round 2 (problems/linalg/qr_v2). It prints
-the two verdicts and messages. The expected verdicts for every evaluation of
-the audit are in qr/sweep.csv (columns pass_v1, pass_v2, reason).
+the two verdicts and messages. The expected verdicts for every recorded evaluation
+of the audit are in qr/sweep.csv and qr/scored.csv (columns pass_v1, pass_v2, reason).
 
 Requires a GPU, PyTorch and Triton versions as in environment/qr_b200.txt, and a
 clone of https://github.com/gpu-mode/reference-kernels at the commit named in
