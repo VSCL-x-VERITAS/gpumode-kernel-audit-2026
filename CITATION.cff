@@ -1,41 +1,71 @@
 cff-version: 1.2.0
 title: "GPU MODE linear-algebra kernel audit, 2026: results record"
 message: >-
-  If you use this record, cite it and the paper it accompanies (preferred-citation).
-  The data (everything outside scripts/, replay/ and qr/randsvd.py) is CC BY 4.0. The
-  scripts are MIT. The competitions, checkers and entry dataset are the work of GPU MODE.
-  Cite GPU MODE and link their dataset when you use their material (see references).
+  If you use this record, cite it as below. When you use the GPU MODE material, also link
+  the GPU MODE dataset and cite KernelBot, as the dataset card requests (see references).
+  The audit's own results are CC BY 4.0, the code (scripts/, replay/, qr/randsvd.py) is
+  MIT, and the material from GPU MODE stays under its licenses (see the README).
 type: dataset
 authors:
   - family-names: Melnichenko
     given-names: Maksim
+    orcid: "https://orcid.org/0009-0007-7749-188X"
     affiliation: "International Computer Science Institute and University of California, Berkeley"
-version: 1.0.0
-date-released: 2026-11-04
+version: 1.0.1
+date-released: 2026-11-10
 license: CC-BY-4.0
 repository-code: "https://github.com/VSCL-x-VERITAS/gpumode-kernel-audit-2026"
-preferred-citation:
-  type: article
-  title: "Principles for Autoformalizing Numerical Methods"
-  authors:
-    - family-names: Fountoulakis
-      given-names: Kimon
-    - family-names: Melnichenko
-      given-names: Maksim
-    - family-names: Mahoney
-      given-names: Michael W.
-  year: 2026
-  status: in-preparation
+abstract: >-
+  Results of an independent audit of the five top-ranked entries on each of the four
+  leaderboards of the 2026 GPU MODE competitions for fast GPU linear-algebra kernels:
+  batched QR factorization (two rounds), batched Cholesky factorization, and batched
+  symmetric eigendecomposition. Each entry was run unmodified through the organizers' own
+  checker on further legal inputs, on NVIDIA B200 GPUs. All twenty entries passed the
+  scored cases of their own round, and eighteen failed the same checker on other legal
+  inputs on which the vendor routine passed. The record holds the verdicts, a description
+  of every recorded evaluation, the hashes of the entries, checkers and environments, and a script that
+  replays a QR evaluation from the entry file (the round-2 entry files are public).
+keywords:
+  - numerical linear algebra
+  - GPU kernels
+  - QR factorization
+  - Cholesky factorization
+  - symmetric eigendecomposition
+  - accuracy testing
+  - GPU MODE
 references:
-  - type: dataset
-    title: "kernelbot-data: GPU MODE competition submissions"
+  - type: data
+    title: "KernelBot Competition Data"
     authors:
       - name: "GPU MODE"
     url: "https://huggingface.co/datasets/GPUMODE/kernelbot-data"
     year: 2026
+  - type: conference-paper
+    title: "KernelBot: A Competition Platform for Writing Heterogeneous GPU Code"
+    authors:
+      - family-names: Zhang
+        given-names: Alex L.
+      - family-names: Sirovatka
+        given-names: Matej
+      - family-names: Schultheis
+        given-names: Erik
+      - family-names: Horowitz
+        given-names: Benjamin
+      - family-names: Saroufim
+        given-names: Mark
+    collection-title: "Championing Open-source DEvelopment in ML Workshop @ ICML25"
+    year: 2025
+    url: "https://openreview.net/forum?id=bq9U4dmuyJ"
   - type: software
     title: "reference-kernels: problem definitions and checkers for GPU MODE competitions"
     authors:
       - name: "GPU MODE"
     url: "https://github.com/gpu-mode/reference-kernels"
+    commit: f3295bb6bd559bae4659d2d8fc45edb1394251b1
+    year: 2026
+  - type: software
+    title: "kernelbot: the GPU MODE competition runner"
+    authors:
+      - name: "GPU MODE"
+    url: "https://github.com/gpu-mode/kernelbot"
     year: 2026

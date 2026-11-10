@@ -1,0 +1,4 @@
+# Keep the record's data files byte-identical on every platform (no line-ending conversion).
+*.csv -text
+raw/** -text
+environment/** -text

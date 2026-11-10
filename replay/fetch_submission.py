@@ -8,15 +8,20 @@ GPUMODE/kernelbot-data, configuration linalg_submissions, under their
 not in that dataset, and the leaderboard API returns no code, so this script
 cannot fetch round-1 entries.
 
-Usage:
-  python fetch_submission.py --leaderboard 774 --user 10billiontokens \
+Usage, from the repository root:
+  python3 replay/fetch_submission.py --leaderboard 774 --user 10billiontokens \
       --expect-sha256 <value from qr/targets.csv> --out 10billiontokens.py
 
-Streams the dataset instead of downloading it whole, keeps the rows for the user on
-that leaderboard, and writes the one whose code hashes to the expected value.
+Streams the dataset's linalg_submissions file (one parquet file, about 4.7 GB) rather
+than saving it, keeps the rows for the user on that leaderboard, and writes the one
+whose code hashes to the expected value. --user is the leaderboard handle (the
+`handle` column of qr/targets.csv). The dataset is read at the fixed revision
+DATASET_REVISION, the version current when this record was published.
 Requires: pip install datasets
 """
 import argparse, hashlib, sys
+
+DATASET_REVISION = "4159cf6b2c6bab208be6dda885d6d87631cc16df"  # GPUMODE/kernelbot-data, last modified 2026-07-30
 
 
 def main():
@@ -27,7 +32,8 @@ def main():
     ap.add_argument("--out", required=True)
     a = ap.parse_args()
     from datasets import load_dataset
-    ds = load_dataset("GPUMODE/kernelbot-data", "linalg_submissions", split="train", streaming=True)
+    ds = load_dataset("GPUMODE/kernelbot-data", "linalg_submissions", split="train", streaming=True,
+                      revision=DATASET_REVISION)
     seen = 0
     for row in ds:
         if row["leaderboard_id"] != a.leaderboard or row["user_name"] != a.user:

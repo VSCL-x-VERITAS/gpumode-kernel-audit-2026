@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """Replay one QR audit evaluation with the organizers' generator and checker.
 
-Example (round 2 kernel, organizer family):
-  python replay_qr.py --reference-kernels /path/to/reference-kernels \
-      --submission /path/to/10billiontokens.py --case rankdef --n 32 --batch 20 --cond 2 --seed 101
+Example, from the repository root (round 2 kernel, organizer family):
+  python3 replay/replay_qr.py --reference-kernels reference-kernels \
+      --submission 10billiontokens.py --case rankdef --n 32 --batch 20 --cond 2 --seed 101
 
-Example (randsvd family, condition number from qr/kappa_bisect.csv):
-  python replay_qr.py --reference-kernels ... --submission ... --case randsvd --n 176 --batch 40 --kappa 1e4 --seed 101
+Example (randsvd family, the condition number and seed from the row of qr/sweep.csv):
+  python3 replay/replay_qr.py --reference-kernels ... --submission ... --case randsvd --n 512 --batch 640 \
+      --kappa 794.3258949419277 --seed 7
 
 What it does: generates the input exactly as the audit did (the organizers'
 qr_v2 generate_input for every family except randsvd, which uses qr/randsvd.py),
@@ -50,7 +51,7 @@ def main():
     ap.add_argument("--case", required=True, help="dense, upper, diagonal, rankdef, nearrank, clustered, band, nearcollinear, rowscale, mixed, or randsvd")
     ap.add_argument("--n", type=int, required=True)
     ap.add_argument("--batch", type=int, required=True)
-    ap.add_argument("--cond", type=int, default=0, help="organizer families: the cond knob of generate_input")
+    ap.add_argument("--cond", type=int, default=None, help="organizer families (required): the cond knob of generate_input")
     ap.add_argument("--kappa", type=float, default=None, help="randsvd only: target 2-norm condition number")
     ap.add_argument("--seed", type=int, required=True)
     ap.add_argument("--expect-sha256", default=None, help="optional sha256 of the submission file, from qr/targets.csv")
@@ -72,6 +73,8 @@ def main():
         rs = load_module(os.path.join(here, "..", "qr", "randsvd.py"), "randsvd")
         data = rs.randsvd(a.batch, a.n, a.kappa, a.seed, device="cuda")
     else:
+        if a.cond is None:
+            sys.exit("--cond is required for the organizer families")
         data = ref_v2.generate_input(a.batch, a.n, a.cond, a.seed, a.case)
 
     sub = load_module(a.submission, "submission_under_test")

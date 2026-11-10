@@ -10,8 +10,6 @@ import math
 import torch
 
 
-
-
 def _rand_orthogonal(batch, n, gen, device):
     a = torch.randn((batch, n, n), device=device, dtype=torch.float64, generator=gen)
     q, _ = torch.linalg.qr(a)
@@ -22,8 +20,8 @@ def randsvd(batch, n, kappa, seed, device="cuda", dtype=torch.float32):
     """Batch of n x n matrices with exact target 2-norm condition number `kappa`.
 
     Built in float64, then cast to the competition dtype (float32). The cast
-    perturbs kappa slightly; callers that need the realized value should measure
-    it with `kappa_of`.
+    perturbs kappa slightly; qr/kappa_bisect.csv records the realized value
+    (`realized_kappa`) at each threshold.
     """
     gen = torch.Generator(device=device)
     gen.manual_seed(seed)

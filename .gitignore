@@ -1,3 +1,7 @@
 __pycache__/
 *.pyc
 .DS_Store
+# A reference-kernels clone and fetched entry files, per the README's replay steps
+/reference-kernels/
+/*.py
+/.venv/
