@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
-"""Build the CSV tables of the record from the raw result files in raw/.
+"""Build the audit's CSV tables of the record from the raw result files in raw/.
 
 Usage: python3 scripts/build_record.py   (no arguments; reads raw/, writes qr/, cholesky/, eigh/)
 
 Reads the B200 results of the QR audit (one JSON per target) and of the
 Cholesky and eigendecomposition audit (JSONL per target and stage), and writes
 flat CSV tables next to this script's repository root. Nothing here generates
-inputs or runs kernels.
+inputs or runs kernels. qr/starter_runs.csv and qr/round2_scores.csv hold the
+organizers' measurements and are not built here.
 """
 import csv, glob, json, os, sys, collections
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

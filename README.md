@@ -1,6 +1,6 @@
 # GPU MODE linear-algebra kernel audit, 2026: results record
 
-This is version 1.0.1 of the record (git tag `v1.0.1`, 2026-11-10). The data are under
+This is version 1.0.2 of the record (git tag `v1.0.2`, 2026-11-11). The data are under
 CC BY 4.0 and the code under the MIT License, with the exceptions stated under Attribution
 and license.
 
@@ -19,7 +19,9 @@ regenerate the input of every recorded QR evaluation), and the hashes of the ent
 checkers and environments. It contains no entry's code. The organizers publish the code
 of the round-2 QR, Cholesky and eigendecomposition entries (see Attribution and license),
 and the round-1 QR code is not public. The record also contains none of the software
-that searched for the failing inputs.
+that searched for the failing inputs. Since version 1.0.2 it lists 48 scored runs of
+the round-2 QR starter found in the organizers' dataset, which give the speed of that
+round's baseline.
 
 ## Summary
 
@@ -207,6 +209,36 @@ The two `torch.geqrf` controls passed both checkers on every searched input. The
 
 The data files keep these labels so that they stay byte-identical to version 1.0.0.
 
+### Speed of the round-2 QR entries against the starter
+
+The audit found no time for the round-2 baseline in the organizers' task files, harness,
+dataset card or announcements. The baseline is the task's starter submission, whose
+kernel returns `torch.geqrf(data)`. The audit found 48 scored runs of that starter on
+leaderboard 774 in the organizers' dataset, submitted between 2026-06-15 and 2026-06-29
+(`qr/starter_runs.csv`). In 27 of them the submitted file equals the starter up to line
+endings and trailing blank lines, in 20 it differs only by comments, docstrings, blank
+lines or trailing spaces, and in one it also adds a `.contiguous()` call on the input.
+46 of the runs scored between 130.2 and 131.5 ms. The other two, both submitted on
+2026-06-22, scored 419.7 and 423.2 ms. The median of the 48 scores is 130.8 ms.
+
+The table divides that median by the leaderboard score of each audited round-2 entry
+(`qr/round2_scores.csv`). A score is a time in seconds, and the leaderboard ranks entries
+by it, lowest first.
+
+| Rank | Entry | Leaderboard score (ms) | Starter median over score |
+|---|---|---|---|
+| 1 | 10billiontokens | 1.221 | 107.2 |
+| 2 | gau.nernst | 1.228 | 106.6 |
+| 3 | dhu.randhar | 1.279 | 102.3 |
+| 4 | zhongmingee | 1.439 | 90.9 |
+| 5 | michaelmelons | 1.499 | 87.3 |
+
+The scores and the starter runs are the organizers' measurements on their B200 runner,
+and the audit timed nothing for this table. The 48 runs were found on 2026-11-06 by
+comparing the code of each of the 586 scored runs of leaderboard 774 at 50 ms or slower
+with the starter. Faster runs were not compared, and the dataset holds deduplicated
+submissions, so the leaderboard may have scored the starter more often.
+
 ### Cholesky, leaderboard 776
 
 *Scored* counts the organizers' 17 test and 15 benchmark cases passed. *Vendor-identical*
@@ -282,13 +314,15 @@ the vendor routine failing as well, so none of their candidates is reproduced.
 | `qr/kappa_bisect.csv` | per entry and shape, the `randsvd` bisection threshold |
 | `qr/summary.csv` | one row per target; its `scored_*` columns count the 19 rows of `scored.csv` |
 | `qr/randsvd.py` | the one input family that is not the organizers' generator |
+| `qr/starter_runs.csv` | 48 scored runs of the round-2 starter on leaderboard 774, found in the organizers' dataset |
+| `qr/round2_scores.csv` | the leaderboard scores of the five audited round-2 entries |
 | `cholesky/`, `eigh/` | `targets.csv`, `official.csv` (scored cases), `registered.csv` (search), `confirmed.csv` (reruns), `summary.csv` |
 | `COLUMNS.md` | meaning of every column, the file conventions, and the raw files |
-| `raw/` | the audit's result files, from which `scripts/build_record.py` derives every CSV |
+| `raw/` | the audit's result files, from which `scripts/build_record.py` derives every CSV except the two files of organizer measurements, `qr/starter_runs.csv` and `qr/round2_scores.csv` |
 | `raw/manifest.json` | the entries' leaderboard metadata and file hashes |
 | `environment/` | software versions, GPU, checker and runner hashes |
 | `replay/` | `replay_qr.py`, `fetch_submission.py`, and `requirements.txt` |
-| `scripts/build_record.py` | rebuilds every CSV from `raw/` |
+| `scripts/build_record.py` | rebuilds every CSV of the audit's results from `raw/` |
 | `scripts/check_record.py` | recomputes every table and most counts in this README from the CSV files |
 | `CITATION.cff`, `LICENSE`, `LICENSE-CODE` | citation metadata, CC BY 4.0 (data), MIT (code) |
 
@@ -302,9 +336,11 @@ python3 scripts/build_record.py && git diff --exit-code -- qr cholesky eigh
 python3 scripts/check_record.py
 ```
 
-The first line rebuilds every CSV from `raw/`, and `git diff` then shows no difference
-from the committed files. The second recomputes every table in this README, and most
-counts in its prose, from the CSV files, and fails on a mismatch.
+The first line rebuilds every CSV of the audit's results from `raw/`, and `git diff` then
+shows no difference from the committed files. It does not write `qr/starter_runs.csv` or
+`qr/round2_scores.csv`, which hold the organizers' measurements. The second recomputes
+every table in this README, and most counts in its prose, from the CSV files, and fails
+on a mismatch.
 
 ## Reproducing a QR verdict
 
@@ -387,8 +423,10 @@ Some of the data comes from GPU MODE and stays under GPU MODE's terms, wherever 
 in this record, including `raw/`:
 - the specifications of the scored cases (shape, batch, conditioning knob, seed), from
   the `reference-kernels` task files, under that repository's license;
-- the leaderboard metadata (ranks, and for Cholesky and eigendecomposition also scores,
-  submission ids and times), from GPU MODE's leaderboards.
+- the leaderboard metadata (ranks, and for round-2 QR, Cholesky and eigendecomposition
+  also scores, submission ids and times), from GPU MODE's leaderboards;
+- the rows of `qr/starter_runs.csv` (submission ids, times and scores), from the
+  organizers' dataset, under the dataset's license.
 
 The rest of the data, the audit's own results, is copyright 2026 Maksim Melnichenko and
 released under CC BY 4.0 (`LICENSE`). The code in `scripts/`, `replay/` and
@@ -404,7 +442,7 @@ Cite the version you used (see `CITATION.cff`):
   title        = {{GPU MODE} linear-algebra kernel audit, 2026: results record},
   year         = {2026},
   howpublished = {\url{https://github.com/VSCL-x-VERITAS/gpumode-kernel-audit-2026}},
-  note         = {Version 1.0.1, git tag v1.0.1}
+  note         = {Version 1.0.2, git tag v1.0.2}
 }
 ```
 
@@ -425,6 +463,10 @@ To report an error in the record, open an issue on this repository.
 
 ## Changes
 
+- **1.0.2 (2026-11-11).** Adds the speed of the round-2 QR entries against the starter:
+  `qr/starter_runs.csv` and `qr/round2_scores.csv`, both GPU MODE's measurements, a README
+  section with the resulting table, their columns in COLUMNS.md, and their checks in
+  `scripts/check_record.py`. Every other data file is unchanged from 1.0.0.
 - **1.0.1 (2026-11-10).** Corrections and additions to the text and the scripts. The data
   files are unchanged from 1.0.0.
   - README: the QR scored cases are given per round, instead of pooled as 19 per entry,

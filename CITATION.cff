@@ -11,8 +11,8 @@ authors:
     given-names: Maksim
     orcid: "https://orcid.org/0009-0007-7749-188X"
     affiliation: "International Computer Science Institute and University of California, Berkeley"
-version: 1.0.1
-date-released: 2026-11-10
+version: 1.0.2
+date-released: 2026-11-11
 license: CC-BY-4.0
 repository-code: "https://github.com/VSCL-x-VERITAS/gpumode-kernel-audit-2026"
 abstract: >-
@@ -25,6 +25,8 @@ abstract: >-
   inputs on which the vendor routine passed. The record holds the verdicts, a description
   of every recorded evaluation, the hashes of the entries, checkers and environments, and a script that
   replays a QR evaluation from the entry file (the round-2 entry files are public).
+  Version 1.0.2 adds 48 scored runs of the round-2 QR starter found in the organizers'
+  dataset and the leaderboard scores of the five audited round-2 entries.
 keywords:
   - numerical linear algebra
   - GPU kernels

@@ -10,9 +10,10 @@ and the check fails if any of them differs. Most counts stated in the README's p
 from the data below and must appear in the README. The script also checks the counting rules,
 the rerun structure, that the record's files carry no identifier fields or host paths, and that
 every replay example in the README names a row of qr/sweep.csv that broke. Facts from outside
-the record (the organizers' task files and runner commits) are not checked here.
+the record (the organizers' task files and runner commits, and the scan of their dataset behind
+qr/starter_runs.csv) are not checked here.
 """
-import csv, glob, json, os, re, sys
+import csv, glob, json, os, re, statistics, sys
 from collections import Counter
 
 R = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -148,8 +149,15 @@ run_table = table(
      ["Cholesky", "776", c_scored, f"{num(c_evals)} generated, {num(c_valid)} valid"],
      ["Eigendecomposition", "775", e_scored, num(e_evals)]])
 
+# QR round 2: the organizers' scores against their runs of the starter. These two files are GPU MODE's data, not built from raw/.
+starter = rows("qr/starter_runs.csv"); st_scores = sorted(float(r["score"]) for r in starter); st_med = statistics.median(st_scores)
+r2s = sorted(rows("qr/round2_scores.csv"), key=lambda r: int(r["rank"]))
+qr_speed_table = table(
+    ["Rank", "Entry", "Leaderboard score (ms)", "Starter median over score"],
+    [[r["rank"], r["handle"], f"{1000 * float(r['score']):.3f}", f"{st_med / float(r['score']):.1f}"] for r in r2s])
+
 TABLES = [("Summary", overview_table), ("What was run", run_table), ("QR scored cases", qr_scored_table),
-          ("QR search", qr_search_table), ("Cholesky", chol_table), ("Eigendecomposition", eigh_table)]
+          ("QR search", qr_search_table), ("QR round-2 speed", qr_speed_table), ("Cholesky", chol_table), ("Eigendecomposition", eigh_table)]
 if "--tables" in sys.argv[1:]:
     for name, tbl in TABLES: print(f"<!-- {name} -->\n{tbl}\n")
     sys.exit(0)
@@ -317,6 +325,30 @@ says("The two `torch.geqrf` controls passed both checkers on every searched inpu
 says(f"the `cusolver` control's `handle` in `qr/targets.csv` and `qr/summary.csv` reads \"{qr['cusolver']['row']['handle']}\"")
 need(summ["cusolver"]["handle"] == qr["cusolver"]["row"]["handle"] and all("cuSOLVER" in qr[c]["row"]["handle"] for c in CONTROL_ORDER),
      "the QR control labels name cuSOLVER")
+
+# QR round-2 speed against the starter
+need([(r["target"], r["handle"], r["rank"]) for r in r2s] == [(q["row"]["target"], q["row"]["handle"], q["row"]["rank"]) for q in q2],
+     "qr/round2_scores.csv lists the audited round-2 entries in rank order")
+need(len({r["submission_id"] for r in starter}) == len(starter), "the starter runs are distinct submissions")
+sv = Counter(r["variant"] for r in starter); need(set(sv) == {"exact", "comments", "contiguous"}, "the starter variants")
+st_lo = [s for s in st_scores if s < 0.2]; st_hi = [r for r in starter if float(r["score"]) >= 0.2]
+st_days = sorted(r["submission_time"][:10] for r in starter)
+need(list(starter[0]) == ["submission_id", "submission_time", "score", "code_sha256", "variant"], "columns of qr/starter_runs.csv (no names, no code)")
+need(list(r2s[0]) == ["target", "handle", "rank", "submission_id", "submission_time", "score"], "columns of qr/round2_scores.csv")
+says(f"The audit found {len(starter)} scored runs of that starter on leaderboard 774 in the organizers' dataset, "
+     f"submitted between {st_days[0]} and {st_days[-1]}")
+says(f"it lists {len(starter)} scored runs of the round-2 QR starter found in the organizers' dataset")
+says(f"| `qr/starter_runs.csv` | {len(starter)} scored runs of the round-2 starter on leaderboard 774, found in the organizers' dataset |")
+says(f"| `qr/round2_scores.csv` | the leaderboard scores of the {W[len(r2s)]} audited round-2 entries |")
+says(f"The {len(starter)} runs were found on 2026-11-06 by")
+says(f"In {sv['exact']} of them the submitted file equals the starter up to line endings and trailing blank lines, in {sv['comments']} it differs "
+     f"only by comments, docstrings, blank lines or trailing spaces, and in {W[sv['contiguous']]} it also adds a `.contiguous()` call on the input.")
+says(f"{len(st_lo)} of the runs scored between {1000 * st_lo[0]:.1f} and {1000 * st_lo[-1]:.1f} ms.")
+need(len(st_hi) == 2 and len({r["submission_time"][:10] for r in st_hi}) == 1, "two slow starter runs, on one day")
+if len(st_hi) == 2:
+    says(f"The other {W[len(st_hi)]}, both submitted on {st_hi[0]['submission_time'][:10]}, scored "
+         f"{' and '.join(f'{1000 * s:.1f}' for s in sorted(float(r['score']) for r in st_hi))} ms.")
+says(f"The median of the {len(starter)} scores is {1000 * st_med:.1f} ms.")
 
 # Cholesky and eigendecomposition results
 says(f"*Scored* counts the organizers' {ct} test and {cb} benchmark cases passed.")

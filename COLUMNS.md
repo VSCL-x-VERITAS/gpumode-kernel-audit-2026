@@ -99,10 +99,31 @@ false), `discovery_fail_with_vendor` (both the entry and the vendor failed),
 `confirmation_candidates`, `confirmation_runs`, `candidates_reproduced_in_all_runs`
 (candidates whose every rerun failed with the vendor passing), `families_attributable`.
 
+## QR round-2 speed: `qr/starter_runs.csv`, `qr/round2_scores.csv`
+
+These two files hold GPU MODE's measurements, not the audit's, and are not built from `raw/`.
+
+`starter_runs.csv` has one row per scored run of the round-2 starter that the audit found
+in the organizers' dataset, among the scored runs of leaderboard 774 at 50 ms or slower, as
+read on 2026-11-06. The dataset holds deduplicated submissions. The columns are
+`submission_id` and `score` (the leaderboard score, seconds) as the dataset gives them,
+`submission_time` (the dataset's instant, UTC, in ISO 8601 form), `code_sha256` (the SHA-256
+of the row's `code` text, UTF-8 encoded) and `variant`. The variant is `exact` when the code
+equals the starter up to line endings and trailing blank lines, `comments` when it differs
+only by comments, docstrings, blank lines or trailing spaces, and `contiguous` when it also
+calls `.contiguous()` on the input. The record holds no code, only its hash, and no
+participant names for these runs.
+
+`round2_scores.csv` has one row per audited round-2 entry: `target`, `handle`, `rank`, and the
+`submission_id`, `submission_time` (UTC) and `score` (seconds) of its ranked submission on
+leaderboard 774, as read on 2026-11-06. The dataset gives the same score for each of these
+submission ids.
+
 ## `raw/`
 
 These are the audit's result files, with GPU serial numbers, process ids and local paths
-removed. `scripts/build_record.py` derives every CSV table from them.
+removed. `scripts/build_record.py` derives every CSV table from them, except the two files of
+organizer measurements described above.
 
 - `raw/qr_b200/<target>.json` holds one object per QR target. `build_record.py` reads
   `label`, `gpu`, `torch`, `scored`, `sweep` and `kappa_bisect`. The `scored` and `sweep`
